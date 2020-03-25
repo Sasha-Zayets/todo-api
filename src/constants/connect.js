@@ -1,0 +1,1 @@
+export const URL = 'mongodb+srv://user-admin:QxayCnqeLCOsKAuo@nodeapi-fapoe.gcp.mongodb.net/chart?retryWrites=true&w=majority';
