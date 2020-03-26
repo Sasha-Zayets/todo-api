@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api', routes.user);
-
+app.use('/api', routes.task);
 
 function serverRun() {
     app.listen(process.env.PORT, () => {
