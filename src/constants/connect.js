@@ -1,1 +1,1 @@
-export const URL = 'mongodb+srv://user-admin:QxayCnqeLCOsKAuo@nodeapi-fapoe.gcp.mongodb.net/todo-list?retryWrites=true&w=majority';
+export const URL = 'mongodb+srv://user-admin:QxayCnqeLCOsKAuo@nodeapi-fapoe.gcp.mongodb.net/test?retryWrites=true&w=majority';
