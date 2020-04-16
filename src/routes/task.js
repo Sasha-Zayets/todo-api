@@ -4,6 +4,6 @@ const router = Router();
 
 router.post('/add-task', addTask);
 router.post('/task', getTasks);
-router.put('/update-task', update);
+router.put('/edit-task', update);
 
 export default router;

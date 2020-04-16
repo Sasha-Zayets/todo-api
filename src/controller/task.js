@@ -8,8 +8,8 @@ export const addTask = async (req, res) => {
             title,
             done
         });
-        await data.save();
-        return res.status(200).send('New post added');
+        const result = await data.save();
+        return res.status(200).send(result);
     } catch(error) {
         return res.status(400).send(error);
     }
@@ -17,8 +17,8 @@ export const addTask = async (req, res) => {
 
 export const getTasks = async (req, res) => {
     try {
-        const { user_id } = req.body;
-        const data = await Task.find({ user_id });
+        const { id } = req.body;
+        const data = await Task.find({ user_id: id });
 
         return res.status(200).send(data);
     } catch(error) {
@@ -28,10 +28,10 @@ export const getTasks = async (req, res) => {
 
 export const update = async (req, res) => {
     try {
-        const { id, title, done } = req.body;
-        await Task.updateOne({ _id: id }, { title, done });
-
-        return res.status(200).send('Task updated');
+        const { id, task } = req.body;
+        const result = await Task.updateOne({ _id: id }, { ...task });
+        
+        return res.status(200).send(result);
     } catch(error) {
         return res.status(400).send(error);
     }
