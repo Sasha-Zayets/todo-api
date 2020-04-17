@@ -36,3 +36,14 @@ export const update = async (req, res) => {
         return res.status(400).send(error);
     }
 }
+
+export const deleteTask = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await Task.deleteOne({ _id: id });
+
+        return res.status(200).send(result);
+    } catch(error) {
+        return res.status(400).send(error);
+    }
+}
