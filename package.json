@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/app.js",
-    "start": "babel-node src/app.js",
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sasha Zayets",
@@ -22,5 +22,6 @@
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+  }
 }

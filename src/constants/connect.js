@@ -1,1 +1,1 @@
-export const URL = 'mongodb+srv://user-admin:QxayCnqeLCOsKAuo@nodeapi-fapoe.gcp.mongodb.net/test?retryWrites=true&w=majority';
+module.exports = 'mongodb+srv://user-admin:QxayCnqeLCOsKAuo@nodeapi-fapoe.gcp.mongodb.net/test?retryWrites=true&w=majority';

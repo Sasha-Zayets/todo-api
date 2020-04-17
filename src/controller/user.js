@@ -1,6 +1,6 @@
-import User from '../models/User';
+const User = require('../models/User');
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
     try {
         const { name, password } = req.body;
         const query = User.where({ name, password });
@@ -13,7 +13,7 @@ export const login = async (req, res) => {
     }
 }
 
-export const registration = async (req, res) => {
+const registration = async (req, res) => {
     try {
         const { name, password } = req.body;
         const newUser = new User({
@@ -26,4 +26,9 @@ export const registration = async (req, res) => {
     } catch(error) {
         return res.status(203).send(error.message);
     }
+}
+
+module.exports = {
+    login,
+    registration
 }

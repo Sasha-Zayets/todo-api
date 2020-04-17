@@ -1,10 +1,10 @@
-import 'dotenv/config';
-import mongoose from 'mongoose';
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import routes from './routes';
-import { URL } from './constants/connect';
+require('dotenv/config');
+const mongoose = require('mongoose');
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const routes = require('./routes');
+const URL = require('./constants/connect');
 
 const app = express();
 
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api', routes.user);
-app.use('/api', routes.task);
+// app.use('/api', routes.task);
 
 function serverRun() {
     app.listen(process.env.PORT, () => {
