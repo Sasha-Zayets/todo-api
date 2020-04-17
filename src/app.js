@@ -8,16 +8,11 @@ import { URL } from './constants/connect';
 
 const app = express();
 
-const whitelist = ['http://localhost:3000', 'https://todo-list-react-appication.herokuapp.com'];
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 mongoose.connect(URL, {useNewUrlParser: true})
     .then(() => {
@@ -26,7 +21,7 @@ mongoose.connect(URL, {useNewUrlParser: true})
     })
     .catch(error => console.log(error));
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
