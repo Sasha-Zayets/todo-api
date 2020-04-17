@@ -8,6 +8,16 @@ import { URL } from './constants/connect';
 
 const app = express();
 
+const whitelist = ['http://localhost:3000'];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 
 mongoose.connect(URL, {useNewUrlParser: true})
     .then(() => {
@@ -16,15 +26,7 @@ mongoose.connect(URL, {useNewUrlParser: true})
     })
     .catch(error => console.log(error));
 
-app.use(cors());
-app.use(function (req, res, next) {
-  res.setHeader('Content-Type', 'application/json');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
-});
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
