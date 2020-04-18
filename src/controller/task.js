@@ -1,6 +1,6 @@
-import Task from '../models/Task';
+const Task = require('../models/Task');
 
-export const addTask = async (req, res) => {
+const addTask = async (req, res) => {
     try {
         const { id, title, done } = req.body;
         const data = new Task({
@@ -15,7 +15,7 @@ export const addTask = async (req, res) => {
     }
 }
 
-export const getTasks = async (req, res) => {
+const getTasks = async (req, res) => {
     try {
         const { id } = req.body;
         const data = await Task.find({ user_id: id });
@@ -26,7 +26,7 @@ export const getTasks = async (req, res) => {
     }
 } 
 
-export const update = async (req, res) => {
+const update = async (req, res) => {
     try {
         const { id, task } = req.body;
         const result = await Task.updateOne({ _id: id }, { ...task });
@@ -37,7 +37,7 @@ export const update = async (req, res) => {
     }
 }
 
-export const deleteTask = async (req, res) => {
+const deleteTask = async (req, res) => {
     try {
         const { id } = req.params;
         const result = await Task.deleteOne({ _id: id });
@@ -46,4 +46,11 @@ export const deleteTask = async (req, res) => {
     } catch(error) {
         return res.status(400).send(error);
     }
+}
+
+module.exports = {
+    addTask,
+    getTasks,
+    update,
+    deleteTask
 }

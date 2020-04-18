@@ -1,7 +1,7 @@
 const user = require('./user');
-// import task from './task';
+const task = require('./task');
 
 module.exports = {
     user,
-    // task
+    task
 };

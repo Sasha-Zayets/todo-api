@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+const { Schema, model } = require('mongoose');
 
 const schema = new Schema({
     user_id: {
@@ -15,4 +15,4 @@ const schema = new Schema({
     }
 });
 
-export default model('Task', schema);
+module.export = model('Task', schema);
