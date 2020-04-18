@@ -19,7 +19,7 @@ const getTasks = async (req, res) => {
     try {
         const { id } = req.body;
         const data = await Task.find({ user_id: id });
-
+        
         return res.status(200).send(data);
     } catch(error) {
         return res.status(400).send(error);
